@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Assignment Example</title>
+</head>
+<body>
+<div>
+<input id="theButton" value="Press Me" type="button" />
+</div>
+
+<p>This is the Microsoft Way, it will only run in Internet Explorer</p>
+
+<script type="text/javascript">
+
+function handleButton() {
+	alert("Go Stanford!");
+}
+
+function secondHandle() {
+	alert("Go Cardinal!");
+}
+
+document.getElementById("theButton").attachEvent("onclick",handleButton);
+document.getElementById("theButton").attachEvent("onclick",secondHandle);
+
+</script>
+
+</body>
+</html>

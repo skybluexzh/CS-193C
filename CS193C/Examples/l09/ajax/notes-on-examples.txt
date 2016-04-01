@@ -1,0 +1,5 @@
+Note that these examples will only run if placed on a webserver.  They will not run locally on your PC or Mac.  
+
+On the Stanford server, the will require CGI turned on for your account and will need to be placed in your cgi-bin folder.
+
+Open the XML file in a web browser it looks pretty good in IE or Firefox.  It will be downright unreadable in a text editor.

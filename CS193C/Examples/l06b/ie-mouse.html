@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Event Test</title>
+<script>
+function testFunc() {
+    var output="sx=" + event.screenX + "; sy=" + event.screenY + "\n" +
+             "cx=" + event.clientX + "; cy=" + event.clientY + "\n" +
+		     "button=" + event.button + "\n";
+    if(event.shiftKey) output = output + "shift ";
+    if(event.altKey) output = output + "alt ";
+    if(event.ctrlKey) output = output + "ctrl ";
+  alert(output);
+}
+</script>
+</head>
+
+<body>
+<h1 onclick="testFunc();">IE Example</h1>
+
+</body>
+</html>

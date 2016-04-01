@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+
+		<meta charset="UTF-8" />
+
+		<title> Yahoo Weather </title>
+
+		<style type="text/css">
+
+			#main {
+				margin: 20px;
+			}
+
+		</style>
+
+	</head>
+
+	<body>
+
+		<div id="main">
+
+			<h1> Yahoo Weather Via Ajax </h1>
+
+			<div id="contents">
+
+				<div>
+					Enter Zip Code: <input type="text" id="zip">
+					<button type="button" onclick="getWeather()"> Get Weather </button>
+					<button type="button" onclick="clearInfo()"> Clear </button> <br>
+				</div>
+				
+				<textarea id="text-area" rows="10" cols="50">  </textarea>
+
+			</div>
+
+		</div>
+
+		<script type="text/javascript">
+
+			function getWeather() {
+				clearInfo();
+				var zip = document.getElementById("zip").value;
+				if (zip.length != 5 || isNaN(zip)) {
+					document.getElementById("text-area").innerHTML = "Please enter a valid zip code";
+					return;
+				}
+				var weatherURL = "http://web.stanford.edu/~psyoung/cgi-bin/a3.php?yws_path=" + encodeURIComponent("p=" + zip);
+				requestObj = new XMLHttpRequest();
+				requestObj.addEventListener("load",processWeather,null);
+				requestObj.open('GET', weatherURL, true);
+				requestObj.send(null); 
+			}
+
+			function processWeather() {
+				if (requestObj.responseXML.getElementsByTagName("location")[0] == undefined) {
+					document.getElementById("text-area").innerHTML = "Sorry location not found";
+					return;
+				}
+				var city = requestObj.responseXML.getElementsByTagName("location")[0].getAttribute("city");
+				var temp = requestObj.responseXML.getElementsByTagName("condition")[0].getAttribute("temp");
+				var desc = requestObj.responseXML.getElementsByTagName("condition")[0].getAttribute("text");
+				document.getElementById("text-area").innerHTML = city + ": " + temp + ", " + desc;
+			}
+
+			function clearInfo() {
+				document.getElementById("text-area").innerHTML = "";
+			}
+
+		</script>
+
+	</body>
+
+</html>

@@ -1,0 +1,40 @@
+/* LESS variable */
+
+@main-color: red;
+
+h1 {
+	background-color: @main-color;
+}
+
+/* nesting */
+
+li {
+	font-style: italic;
+	span {
+		color: blue;
+	}
+}
+
+/* mixins */
+
+.highlighted {
+	font-variant: small-caps;
+	text-decoration: overline underline;
+}
+
+h3 {
+	color: @main-color;
+	.highlighted;
+}
+
+/* parameters and expressions */
+
+.emphasize(@color,@size) {
+	border: @size - 15px solid blue;
+	font-size: @size;
+	color: @color;
+}
+
+h2 {
+	.emphasize(purple,25px);
+}

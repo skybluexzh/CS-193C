@@ -1,0 +1,90 @@
+#main {
+	width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 50px;
+}
+
+#masthead {
+	color: #cc0000;
+	font-weight: bold;
+	font-size: 36pt;
+	font-family: sans-serif;
+	float: left;
+}
+
+#quarter {
+	color: #cc0000;
+	font-size: 12pt;
+	font-weight: bold;
+	float: right;
+	margin-top: 10px;
+}
+
+#edition {
+	color: #cc0000;
+	font-size: 12pt;
+	font-weight: bold;
+	float: right;
+	clear: right;
+}
+
+#leftcol {
+	float: left;
+	clear: left;
+	width: 480px;
+	margin-top: 20px;
+}
+
+#bingheading {
+	float: left;
+	font-size: 18pt;
+	font-family: sans-serif;
+	font-weight: bold;
+}
+
+#leftcontents {
+	float: left;
+	clear: left;
+	margin-top: 20px;
+}
+
+img {
+	float: left;
+	clear: left;
+	margin-right: 10px;
+	margin-bottom: 5px;
+}
+
+#rightcol {
+	float: right;
+	clear: right;
+	width: 300px;
+	margin-top: 20px;
+}
+
+#calendarheading {
+	float: left;
+	font-size: 14pt;
+	font-family: sans-serif;
+	font-weight: bold;
+}
+
+#rightcontents {
+	float: left;
+	clear: left;
+	margin-top: 20px;
+}
+
+.rightpara {
+	font-size: 12pt;
+	font-family: sans-serif;
+	font-style: italic;
+	border-top: 1px solid black;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.lastpara {
+	border-bottom: 1px solid black;
+}

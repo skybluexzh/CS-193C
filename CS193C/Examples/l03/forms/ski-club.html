@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>State College Ski Club</title>
+<style type="text/css">
+#mainform {
+	width: 450px;
+}
+fieldset {
+	margin-bottom: 15px;
+}
+
+div {
+	margin-bottom: 10px;
+}
+</style>
+
+</head>
+<body>
+<h1>Ski Club Signup Page</h1>
+<div id="mainform">
+<form
+ 	action="mailto:tripmanager@skiclub.stanford.edu"
+	method="post"
+	enctype="text/plain" id="signup">
+	
+  <fieldset>
+    <legend>Personal Information</legend>
+    <table>
+      <tr><td><label for="name">Name:</label></td>
+          <td><input name="name" id="name" type="text" size="25" /></td></tr>
+      <tr><td><label for="email">E-Mail:</label></td>
+          <td><input name="email" id="email" type="text" size="25" /></td></tr>
+      <tr><td><label for="credit">Credit Card:</label></td>
+          <td><input name="credit" id="credit" type="text" size="25" /></td></tr>
+    </table>
+  </fieldset>
+
+  <fieldset>
+    <legend>Travel Arrangements</legend>
+	<input name="travel" id="notravel" type="radio" value="none" />
+	   <label for="notravel">None</label> 
+    <input name="travel" id="bus" type="radio" value="bus" checked="checked" />
+	   <label for="bus">Bus $25</label>
+    <input name="travel" id="airplane" type="radio" value="air" />
+       <label for="airplane">Airplane $85</label>  
+  </fieldset>
+  
+  <fieldset>
+  	<legend>Housing and Meals</legend>
+	<fieldset>
+	  <legend>Room Choices</legend>
+	  <input name="room" id="single" type="radio" value="single" /> 
+         <label for="single">Single ($80/night)</label>
+      <input name="room" id="double" type="radio" value="double" />
+	     <label for="double">Double ($40/night)</label>
+	</fieldset>
+	<fieldset>
+	  <legend>Meals Desired ($8 each)</legend>
+	  <table>
+        <tr><td><label for="fridayDinner">Friday Dinner</label></td>   
+            <td><input name="fridayDinner" id="fridayDinner" type="checkbox" /></td></tr>
+        <tr><td><label for="saturdayDinner">Saturday Dinner</label></td> 
+            <td><input name="saturdayDinner" id="saturdayDinner" type="checkbox" /></td></tr>
+        <tr><td><label for="sundayDinner">Sunday Dinner</label></td>   
+            <td><input name="sundayDinner" id="sundayDinner" type="checkbox" /></td></tr>
+       </table>
+	</fieldset>
+  </fieldset>
+  
+  <fieldset>
+    <legend>Ski Package</legend>
+	<div><label for="days">Days of Lift Tickets:</label> 
+	     <input name="days" id="days" type="text" size="3" maxlength="1" /></div>
+	<div><label for="rentalPackage">Rental Package:</label>
+         <select name="rentalPackage" id="rentalPackage">
+                <option value="none">None </option>
+                <option value="ski">Ski Package ($25) </option>
+                <option value="snowboard">Snowboard Package ($30) </option>
+              </select></div>
+  </fieldset>
+  
+  <fieldset>
+    <legend>Comments</legend>
+	<textarea rows="6" cols="40">Enter Roommate Preferences or Other Information Here</textarea>
+  </fieldset>
+  
+  <div>
+    <input value="Submit" type="submit" />
+    <input value="Reset" type="reset" />
+  </div>
+</form>
+</div>
+</body>
+</html>

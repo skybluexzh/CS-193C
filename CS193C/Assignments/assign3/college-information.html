@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+
+		<meta charset="UTF-8" />
+
+		<title> College Information </title>
+
+		<style type="text/css">
+
+			#main {
+				width: 1200px;
+				margin-left: auto;
+				margin-right: auto;
+				margin-top: 50px;
+			}
+
+			#college-information {
+				float: left;
+			}
+
+			#right-col {
+				float: right;
+				margin-bottom: 50px;
+			}
+
+			table, th, td {
+				border: 1px solid black;
+				border-collapse: collapse;
+				padding: 5px;
+			}
+
+			h3 {
+				text-align: center;
+				font-weight: bold;
+				margin-top: 0px;
+				padding: 5px;
+				color: white;
+				background-color: #606060;
+			}
+
+			#criteria {
+				border: 1px solid black;
+				padding: 5px;
+			}
+
+			#display {
+				border: 1px solid black;
+				padding: 5px;
+				margin-top: 20px;
+				width: 200px;
+			}
+
+			#update-bt {
+				margin-top: 20px;
+				width: 70px;
+    			height: 30px;
+			}
+
+			.text, .c-box {
+				float: right;
+				margin-left: 10px;
+			}
+
+			.s-label {
+				font-size: 10pt;
+			}
+
+			.radio-bt {
+				text-align: center;
+			}
+
+		</style>
+
+
+
+	</head>
+
+	<body>
+
+		<script>
+
+			var univArray = new Array(
+				{name: "Stanford University", nick: "Stanford", ownership: "private", sys: "n/a", SATh: 1550, SATl: 1360, tuition: 27204, room: 8680},
+				{name: "University of California, Berkeley", nick: "UC Berkeley", ownership: "public", sys: "University of California", SATh: 1440, SATl: 1170,tuition: 4200, room: 10608},
+				{name: "University of California, Santa Cruz", nick: "UC Santa Cruz", ownership: "public", sys: "University of California", SATh: 1270, SATl: 1030, tuition: 4384, room: 9708},
+				{name: "San Francisco State University", nick: "SFSU", ownership: "public", sys: "CalState", SATh: 1120, SATl: 850, tuition: 1826, room: 6736},
+				{name: "San Jose State University", nick: "SJSU", ownership: "public", sys: "CalState", SATh: 1140, SATl: 860, tuition: 1912, room: 7395},
+				{name: "Sonoma State University", nick: "Sonoma State", ownership: "public", sys: "CalState", SATh: 1140, SATl: 930, tuition: 2226, room: 9606},
+				{name: "California State University, Hayward", nick: "CalState Hayward", ownership: "public", sys: "CalState", SATh: 1050, SATl: 810, tuition: 1800, room: 6435},
+				{name: "University of San Francisco", nick: "USF", ownership: "private", sys: "Roman Catholic", SATh: 1240, SATl: 1030, tuition: 21780, room: 9080},
+				{name: "Santa Clara University", nick: "SCU", ownership: "private", sys: "Roman Catholic", SATh: 1300, SATl: 1110, tuition: 23445, room: 8904},
+				{name: "Mills College", nick: "Mills College", ownership: "private", sys: "n/a", SATh: 1130, SATl: 920, tuition: 19482, room: 7832}
+			);
+
+			function isPrice(property) {
+				return (property == "tuition" || property == "room");
+			}
+
+			function getPriceFormat(value) {
+				var remainder = value % 1000;
+			    var final_rem;
+			    if (remainder < 10) {
+			    	final_rem = "00" + remainder;
+			    } else if (remainder < 100) {
+			    	final_rem = "0" + remainder;
+			    } else {
+			    	final_rem = remainder.toString();
+			    }
+			    return ("$" + Math.floor(value / 1000) + "," + final_rem);
+			}
+
+			function styleHeaderCell(cell) {
+				var style = document.createElement("style");
+				style.type = "text/css";
+				style.innerHTML = ".cssClass {" +
+					"text-align: center;" +
+					"font-weight: bold;" +
+					"margin-top: 0px;" +
+					"padding: 5px;" +
+					"color: white;" +
+					"background-color: #606060;"
+				"}";
+				document.getElementsByTagName('head')[0].appendChild(style);
+				cell.className = "cssClass";
+			}
+
+			function insertTableHeader() {
+				var table = document.getElementById("college-information");
+				var header = table.createTHead();
+				var row = header.insertRow(0);
+				var headerArray = new Array("Name", "Nickname", "Ownership", "System", "SAT High", "SAT Low", "Tuition", "Room and Board");
+				for (var i = 0; i < headerArray.length; i++) {
+					var cell = row.insertCell(-1);
+					cell.innerHTML = headerArray[i];
+					styleHeaderCell(cell);
+				}
+			}
+
+			function inflateTable(univArrayMatched) {
+			    var table = document.getElementById("college-information");
+			    for (var i = 0; i < univArrayMatched.length; i++) {
+			    	var row = table.insertRow(-1);
+			    	for (var property in univArrayMatched[i]) {
+					    if (univArrayMatched[i].hasOwnProperty(property)) {
+							var cell = row.insertCell(-1);
+							if (isPrice(property)) {
+								cell.innerHTML = getPriceFormat(univArrayMatched[i][property]);
+							} else {
+								cell.innerHTML = univArrayMatched[i][property];
+							}
+					    }
+					}
+			    }
+			}
+
+			function getOwnership() {
+				var form = document.getElementById("ownership");
+			    for (var i = 0; i < form.length; i++) {
+			        if (form[i].checked) {
+			            return form[i].value;
+			        }
+			    }
+			}
+
+			function getMaxSat() {
+				return document.getElementById("max-sat").value;
+			}
+
+			function getMinSat() {
+				return document.getElementById("min-sat").value;
+			}
+
+			function getMaxTuition() {
+				return document.getElementById("max-tuition").value;
+			}
+
+			function matchedCriteria(univ) {
+				for (var property in univ) {
+				    if (univ.hasOwnProperty(property)) {
+						if ( (property == "ownership" && (getOwnership() != "dont-care" && univ[property] != getOwnership())) ||
+							 (property == "SATh" && (getMaxSat() && parseInt(univ[property]) > parseInt(getMaxSat()))) ||
+							 (property == "SATl" && (getMinSat() && parseInt(univ[property]) < parseInt(getMinSat()))) ||
+							 (property == "tuition" && (getMaxTuition && parseInt(univ[property]) > parseInt(getMaxTuition())))
+						   ) {
+							return false;
+						}
+				    }
+				}
+				return true;
+			}
+
+			function clearTable() {
+				var table = document.getElementById("college-information");
+				while(table.hasChildNodes()) {
+					table.removeChild(table.firstChild);
+				}
+			}
+
+			function getNamePref() {
+				var form = document.getElementById("name-pref");
+			    for (var i = 0; i < form.length; i++) {
+			        if (form[i].checked) {
+			            return form[i].value;
+			        }
+			    }
+			}
+
+			function getNoneDisplayCols() {
+				var colArray = new Array();
+				if (getNamePref() == "nick") {
+					colArray.push(0);
+				} else { // == "name"
+					colArray.push(1);
+				}
+				if (!document.getElementById("sat-info").checked) {
+					colArray.push(4);
+					colArray.push(5);
+				}
+				if (!document.getElementById("tuition-info").checked) {
+					colArray.push(6);
+				}
+				if (!document.getElementById("sys-info").checked) {
+					colArray.push(3);
+				}
+				return colArray
+			}
+
+			function displayPreference() {
+				var colArray = getNoneDisplayCols();
+				var table = document.getElementById("college-information");
+				var rows = table.getElementsByTagName('tr');
+			    for (var i = 0; i < rows.length; i++) {
+					var cells = rows[i].getElementsByTagName('td');
+					for (var j = 0; j < colArray.length; j++) {
+						cells[colArray[j]].style.display = "none";
+					}
+			    }
+
+			}
+
+			function updateInfo() {
+				clearTable();
+				var univArrayMatched = new Array();
+				for (var i = 0; i < univArray.length; i++) {
+			    	if (!matchedCriteria(univArray[i])) {
+			    		continue;
+			    	} else {
+			    		univArrayMatched.push(univArray[i]);
+			    	}
+			    }
+			    insertTableHeader();
+			    inflateTable(univArrayMatched);
+			    displayPreference();
+			}
+
+		</script>
+
+		<div id="main">
+
+			<h1> Bay Area Colleges and Universities </h1>
+
+			<div id="contents">
+
+				<table id="college-information">
+
+				</table>
+
+				<div id="right-col">
+
+					<div id="criteria">
+
+						<h3> Search Criteria </h3>
+
+						<form class="radio-bt" id="ownership">
+							<input type="radio" name="ownership" value="public"> Public
+							<input type="radio" name="ownership" value="private"> Private
+							<input type="radio" name="ownership" value="dont-care" checked="checked"> Don't Care
+						</form>
+
+						<br>
+
+						<div id="text-field">
+							Maximum Tuition <input type="text" id="max-tuition" class="text"> <br> <span class="s-label"> leave blank for don't care </span> <br> <br>
+							Maximum High SAT <input type="text" id="max-sat" class="text"> <br> <span class="s-label"> leave blank for don't care </span> <br> <br>
+							Minimum Low SAT <input type="text" id="min-sat" class="text"> <br> <span class="s-label"> leave blank for don't care </span> 
+						</div>
+
+					</div>
+
+					<div id="display">
+
+						<h3> Information to Display </h3>
+
+						<form class="radio-bt" id="name-pref">
+							<input type="radio" name="name" value="name" checked="checked"> Fullname
+							<input type="radio" name="name" value="nick"> Nickname
+						</form>
+
+						<br>
+
+						<form id="check-box">
+							SAT Information <input type="checkbox" value="sat" class="c-box" id="sat-info" checked="checked"> <br> <br>
+							Tuition Information <input type="checkbox" value="tuition" class="c-box" id="tuition-info" checked="checked"> <br> <br>
+							System <input type="checkbox" value="system" class="c-box" id="sys-info">
+						</form>
+
+					</div>
+
+					<button id="update-bt" type="button" onclick="updateInfo()"> Update </button>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</body>
+
+</html>

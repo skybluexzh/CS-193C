@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=9" />
+<title>DOM Capture Example</title>
+<script>
+
+function mainBodyClicked(event) {
+    if (!confirm("body clicked, continue?"))
+	    event.stopPropagation();
+}
+
+function firstDivClicked(event) {
+    if (!confirm("part one div clicked, continue?"))
+	    event.stopPropagation();
+}
+
+function firstParaClicked(event) {
+    if (!confirm("paragraph one clicked, continue?"))
+	    event.stopPropagation();
+}
+
+function secondParaClicked(event) {
+    if (!confirm("paragraph two clicked, continue?"))
+	    event.stopPropagation();
+}
+
+function init() {
+    document.getElementById("mainBody").addEventListener("click",mainBodyClicked,true);
+    document.getElementById("firstDiv").addEventListener("click",firstDivClicked,true);
+    document.getElementById("firstPara").addEventListener("click",firstParaClicked,true);
+    document.getElementById("secondPara").addEventListener("click",secondParaClicked,true);
+}
+</script>
+</head>
+
+<body onload="init();" id="mainBody">
+<div id="firstDiv">
+<h1>Part One</h1>
+<p id="firstPara">A paragraph in part one</p>
+<p id="secondPara">Another paragraph in part one</p>
+</div>
+<div>
+<h1>Part Two</h1>
+<p>A paragraph in part two</p>
+<p>Another paragraph in part two</p>
+</div>
+</body>
+</html>

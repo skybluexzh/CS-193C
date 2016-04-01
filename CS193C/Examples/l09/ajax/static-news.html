@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Ajax Test</title>
+
+</head>
+
+<body>
+<h1>Google News Summaries</h1>
+<p>Information summarized from RSS feed from news.google.com</p>
+<p>This version is static.  Place both this file and the sample-news.xml file in the same directory on a web server.</p>
+
+<p>Note that this example will not run locally -- it must be placed on a webserver along with
+the accompanying sample-news.xml file.</p>
+
+<p>
+<input type="button" value="Retrieve News" onclick="getNews();" />
+</p>
+
+<h2>News</h2>
+
+<div id="news">
+</div>
+
+<script>
+
+var requestObj = null;	// XMLHttpRequest object
+
+function getNews() {
+	requestObj = new XMLHttpRequest();
+		
+	requestObj.addEventListener("load",processNews,null);
+	requestObj.open('GET', './sample-news.xml', true);
+	requestObj.send(null); 
+}
+
+function processNews() {
+	var newsTitles = requestObj.responseXML.getElementsByTagName("item");
+	var newHTML = "<ul>";
+	for (var i=0; i < newsTitles.length; i++) {
+		newHTML = newHTML + "<li>" 
+				+ newsTitles[i].getElementsByTagName("title")[0].firstChild.nodeValue
+				+ "</li>";
+	}
+	newHTML = newHTML + "</ul>";
+	document.getElementById("news").innerHTML = newHTML;
+}
+
+
+</script>
+</body>
+</html>

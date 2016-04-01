@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Test</title>
+<script>
+var pairOne = {
+		a: 12,
+		b: 8,
+		sum: function() {
+				console.log(this.a + this.b);
+			},
+		difference: function() {
+				console.log(this.a - this.b);
+			}
+	};
+
+var pairTwo = {
+		a: 5,
+		b: 10,
+		sum: function() {
+				console.log(this.a + this.b);
+			},
+		difference: function() {
+				console.log(this.a - this.b);
+			}
+	};
+	
+pairOne.sum();
+pairTwo.difference();
+</script>
+<style>
+</style>
+</head>
+<body>
+</body>
+</html>

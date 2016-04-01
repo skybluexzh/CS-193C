@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Test</title>
+<script>
+
+function Animal() {
+	this.kingdom = "Animal";
+}
+
+function Mammal() {
+	this.biologicalclass = "Mammal";
+}
+
+Mammal.prototype = new Animal();
+
+function Canine() {
+	this.species = "Canis Lupus";
+}
+
+Canine.prototype = new Mammal();
+
+function Human() {
+	this.species = "Homo Sapien";
+}
+
+Human.prototype = new Mammal();
+
+var molly = new Canine();
+var patrick = new Human();
+
+
+var chloe = new Canine();
+molly.species = "Canis Superiorus";
+
+console.log("for in");
+
+for (prop in molly) {
+	console.log(prop + " is " + molly[prop]);
+}
+
+console.log("for in with hasOwnProperty");
+
+for (prop in molly) {
+	if (molly.hasOwnProperty(prop)) {
+		console.log(prop + " is " + molly[prop]);
+	}
+}
+
+console.log("for of");  
+// works on things designed to enumerate
+   // experimental ECMAScript 6
+
+for (value of [1, 2, 3]) {
+	console.log(value);
+}
+
+
+</script>
+<style>
+</style>
+</head>
+<body>
+</body>
+</html>
+

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Some Buttons</title>
+<link href="css/blitzer/jquery-ui-1.10.3.custom.css" rel="stylesheet">
+<script src="js/jquery-1.9.1.js"></script>
+<script src="js/jquery-ui-1.10.3.custom.js"></script>
+<script>
+$(function() {
+
+		$( "#anExample" ).buttonset();
+		$( "#exampleTwo" ).buttonset();
+
+	});
+</script>
+</head>
+<body>
+
+<div id="anExample">
+<input type="radio" id="alpha" name="mySet" checked="checked"><label for="alpha">Alpha</label>
+<input type="radio" id="beta" name="mySet"><label for="beta">Bravo</label>
+<input type="radio" id="charlie" name="mySet"><label for="charlie">Charlie</label>
+</div>
+
+<p>Second Example</p>
+<div id="exampleTwo">
+<input type="radio" id="one" name="anotherSet" checked="checked"><label for="one">One</label>
+<input type="radio" id="two" name="anotherSet"><label for="two">Two</label>
+</div>
+
+</body>
+</html>

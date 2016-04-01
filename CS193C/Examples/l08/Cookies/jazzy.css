@@ -1,0 +1,11 @@
+/* Jazzy CSS */
+
+body {
+	color: fuchsia;
+	background-color: purple;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+a:visited {
+	color: white;
+}

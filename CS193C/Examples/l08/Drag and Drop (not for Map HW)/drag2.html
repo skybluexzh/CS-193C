@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Drag Example</title>
+<style>
+
+#image1 {
+	position: absolute;
+	left: 110px;
+	top: 50px;
+}
+
+#image2 {
+	position: absolute;
+	left: 310px;
+	top: 50px;
+}
+
+#dropzone {
+	height: 120px;
+	width: 160px;
+	border: 10px solid grey;
+	position: absolute;
+	left: 100px;
+	top: 200px;
+}
+</style>
+</head>
+<body>
+<img src="mollys.jpg" alt="image" id="image1" draggable="true" />
+<img src="quad.jpg" alt="image" id="image2" draggable="true" />
+
+<div id="dropzone">
+</div>
+<script>
+function dropped(evt) {
+	evt.preventDefault();
+	var dragId = evt.dataTransfer.getData("text/plain");
+	var dragSrc = document.getElementById(dragId).src;
+	
+	var slashIndex = dragSrc.lastIndexOf("/");
+	var dragSrc = dragSrc.substr(slashIndex + 1);
+	
+	document.getElementById(dragId).style.visibility = "hidden";
+	document.getElementById("dropzone").style.backgroundImage
+	    = "url(" + dragSrc + ")";
+}
+
+function allowdrag(evt) {
+	evt.preventDefault();
+}
+
+function dragstart(evt) {
+    var elementId = evt.target.id;
+    evt.dataTransfer.setData("text/plain",elementId);
+}
+
+var images = document.getElementsByTagName("img");
+for(var i=0; i<images.length; i++) {
+	images[i].ondragstart = dragstart;
+}
+
+var dropzone = document.getElementById("dropzone");
+dropzone.ondrop = dropped;
+dropzone.ondragover = allowdrag;
+</script>
+</body>
+</html>

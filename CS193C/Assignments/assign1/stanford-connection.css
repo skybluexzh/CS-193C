@@ -1,0 +1,113 @@
+#main {
+	width: 1060px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 50px;
+}
+
+#banner {
+	width: 800px;
+	float: left;
+	background-color: #9A0000;
+}
+
+#bannerheading {
+	color: white;
+	font-weight: bold;
+	font-size: 48pt;
+	font-family: sans-serif;
+	float: left;
+	line-height: 120px;
+	margin-left: 20px;
+}
+
+#logo {
+	float: right;
+}
+
+#lowercontents {
+	width: 800px;
+	margin-top: 20px;
+	float: left;
+	clear: left;
+}
+
+#leftcol {
+	width: 200px;
+	float: left;
+	margin-left: 20px;
+}
+
+#photo {
+	float: left;
+}
+
+#about {
+	width: 200px;
+	margin-top: 10px;
+	float: left;
+	clear: left;
+}
+
+#friends {
+	width: 200px;
+	margin-top: 10px;
+	float: left;
+	clear: left;
+}
+
+.s-heading {
+	padding-left: 10px;
+	line-height: 2em;
+	font-weight: bold;
+	background-color: #CC9191;
+	border-top: 2px solid black;
+	border-bottom: 2px solid black;
+}
+
+.leftpara {
+	margin-top: 10px;
+}
+
+.boldword {
+	font-weight: bold;
+}
+
+#middlecol {
+	width: 550px;
+	float: left;
+	margin-left: 15px;
+}
+
+#m-heading {
+	font-weight: bold;
+	font-size: 20pt;
+	font-family: sans-serif;
+	margin-bottom: 20px;
+}
+
+#middlepara {
+	margin-top: 20px;
+}
+
+.middlepara {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-top: 1px solid black;
+}
+
+#rightcol {
+	width: 240px;
+	float: right;
+}
+
+textarea {
+	margin-top: 20px;
+}
+
+input {
+	margin-top: 20px;
+}
+
+
+

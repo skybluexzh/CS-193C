@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title></title>
+</head>
+<body>
+<script src="handlebars-v1.3.0.js">
+</script>
+<script id="example" type="text/x-handlebars-template">
+<ul>
+  {{#each complexes}}
+  <li>{{this.name}}
+  <ul>
+        {{#each this.dorms}}
+        <li>{{this}}</li>
+		{{/each}}
+      </ul></li>
+  {{/each}}
+</ul>
+</script>
+<script>
+var theData = {complexes: 
+                 [{name: "FloMo",
+				  dorms: ["Alondra", "Cardinal", "Faisan", 
+							"Gavilan", "Loro", "Mirlo", "Paloma"]},
+				 {name: "Lagunita",
+				  dorms: ["WestLag", "Naranja", "Ujamaa"]},
+				 {name: "Stern",
+				  dorms: ["Burbank", "Casa Zapata", "Donner", "Larkin",
+				  "Serra", "Twain"]}]};
+var theTemplateScript = document.getElementById("example").innerHTML;
+var theTemplate = Handlebars.compile (theTemplateScript);
+document.writeln(theTemplate(theData));
+</script>
+</body>
+</html>

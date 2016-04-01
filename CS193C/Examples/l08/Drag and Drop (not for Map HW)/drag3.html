@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Drag Example</title>
+<style>
+
+#image1 {
+	position: absolute;
+	left: 110px;
+	top: 50px;
+}
+
+#image2 {
+	position: absolute;
+	left: 310px;
+	top: 50px;
+}
+
+#dropzone {
+	height: 120px;
+	width: 160px;
+	border: 10px solid grey;
+	position: absolute;
+	left: 100px;
+	top: 200px;
+}
+
+#output {
+	position: absolute;
+	left: 100px;
+	top: 400px;
+}
+</style>
+</head>
+<body>
+<p>Run me in Chrome only</p>
+<img src="mollys.jpg" alt="image" id="image1" draggable="true" />
+<img src="quad.jpg" alt="image" id="image2" draggable="true" />
+
+<div id="dropzone">
+</div>
+
+<textarea id="output" cols="40" rows="20">
+</textarea>
+<script>
+function dropped(evt) {
+	evt.preventDefault();
+	var dragId = evt.dataTransfer.getData("text/plain");
+	
+//	document.getElementById(dragId).style.visibility = "hidden";
+//	document.getElementById("dropzone").style.backgroundImage
+//	    = "url(" + document.getElementById(dragId).src + ")";
+		
+	var dataTransferItemList = evt.dataTransfer.items;
+	var output = dataTransferItemList.length + " items\n\n";
+	for(var i=0; i<dataTransferItemList.length; i++) {
+		var item = dataTransferItemList[i];
+		output += "kind: " + item.kind + "\n";
+		output += "type: " + item.type + "\n";
+	}
+	
+	document.getElementById("output").value = output;
+
+}
+
+function allowdrag(evt) {
+	evt.preventDefault();
+}
+
+function dragstart(evt) {
+    var elementId = evt.target.id;
+	console.log("drag start " + elementId);
+    evt.dataTransfer.setData("text/plain",elementId);
+}
+
+var images = document.getElementsByTagName("img");
+for(var i=0; i<images.length; i++) {
+	images[i].ondragstart = dragstart;
+}
+
+var dropzone = document.getElementById("dropzone");
+dropzone.ondrop = dropped;
+dropzone.ondragover = allowdrag;
+</script>
+</body>
+</html>

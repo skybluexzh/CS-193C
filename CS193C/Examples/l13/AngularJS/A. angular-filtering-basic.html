@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+<meta charset="UTF-8" />
+<title></title>
+<script src="angular.js"></script>
+</head>
+<body ng-init="universities=['Stanford','UCLA','UCI','UCSD','Cal'];">
+
+<input type="text" ng-model="searchString" />
+
+<ul>
+<li ng-repeat="univ in universities | filter: searchString">{{univ}}</li>
+</ul>
+</body>
+</html>

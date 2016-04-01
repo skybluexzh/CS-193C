@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Slideshow</title>
+</head>
+<body onload="setInterval(changePic,3000);">
+<h1>Welcome to Stanford</h1>
+
+<div>
+<img src="braun.jpg" alt="photo" id="photo" />
+</div>
+
+<script>
+
+// Note: this is the non-preload version to keep the code shorter
+//   for actual use, make sure to preload.
+
+window.onload = function() {
+		var currPic=0;
+		var picArray = new Array("braun.jpg","gates.jpg","meyer.jpg",
+								   "quad.jpg","memchu.jpg");
+								   
+		setInterval(				   
+			function() {
+			  currPic = currPic + 1;
+			  if (currPic >= picArray.length) {
+				currPic = 0;
+			  }
+
+			  document.getElementById("photo").src = picArray[currPic];
+			},
+			3000);
+	}
+</script>
+</body>
+</html>

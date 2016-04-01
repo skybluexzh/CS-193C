@@ -1,0 +1,73 @@
+#all {
+	width: 1000px;
+	margin-top: 30px;
+	margin-bottom: 100px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.entry {
+    height: 150px;
+    padding-left: 30px;
+    padding-right: 30px;
+    transition: padding-top 1s, padding-bottom 1s;
+    border-top: 2px solid red;
+    position: relative;
+    clear: both;
+}
+
+.last {
+	border-bottom: 2px solid red;
+}
+
+.entry:hover {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: #87CEEB;
+
+}
+
+.entryheading {
+	color: red;
+}
+
+.entrydate {
+	position: absolute;
+	font-weight: bold;
+	right: 30px;
+}
+
+.entryfooter {
+	font-style: italic;
+	position: absolute;
+	bottom: 10px;
+	right: 30px;
+}
+
+.entrycontents {
+	width: 840px;
+	font-family: sans-serif;
+}
+
+h1 {
+	padding-top: 20px;
+	text-align: center;
+	color: red;
+	font-size: 36pt;
+}
+
+.seal {
+	margin-bottom: 30px;
+	margin-right: 250px;
+	float: right;
+}
+
+.memchu {
+	float: left;
+	margin: 30px;
+}
+
+
+
+
+

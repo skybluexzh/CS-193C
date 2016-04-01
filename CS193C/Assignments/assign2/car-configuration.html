@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+
+		<meta charset="UTF-8" />
+		
+		<title> Car Configuration </title>
+
+		<style type="text/css">
+
+			#main {
+				width: 900px;
+				margin-left: auto;
+				margin-right: auto;
+			}
+
+			#leftcol {
+				width: 425px;
+				float: left;
+			}
+
+			#rightcol {
+				width: 425px;
+				float: right;
+			}
+
+			.header {
+				color: white;
+				background-color: #606060;
+				padding: 5px;
+				margin-top: 0px;
+			}
+
+			.price, button, img {
+				float: right;
+				clear: right;
+			}
+
+			.box {
+				border: 1px solid black;
+				padding: 10px;
+				margin-top: 10px;
+			}
+
+			#car-box {
+				height: 150px;
+			}
+
+		</style>
+
+		<script>
+
+			function calculateTotal() {
+
+			    var configuration_form = document.getElementById("configuration-form");
+			    var configuration = 0;
+			    for (var i = 0; i < configuration_form.length; i++) {
+			        if (configuration_form[i].checked) {
+			            configuration = parseInt(configuration_form[i].value);
+			        }
+			    }
+
+			    var combo_form = document.getElementById("combo-form");
+			    var combo = 0;
+			    for (var i = 0; i < combo_form.length; i++) {
+			        if (combo_form[i].checked) {
+			            combo = parseInt(combo_form[i].value);
+			        }
+			    }
+
+			    var dealer_form = document.getElementById("dealer-form");
+			    var dealer = 0;
+			    for (var i = 0; i < dealer_form.length; i++) {
+			        if (dealer_form[i].checked) {
+			            dealer += parseInt(dealer_form[i].value);
+			        }
+			    }
+
+			    var total_price = configuration + combo + dealer;
+
+			    var remainder = total_price%1000;
+			    var final_rem;
+			    if (remainder < 10) {
+			    	final_rem = "00" + remainder;
+			    } else if (remainder < 100) {
+			    	final_rem = "0" + remainder;
+			    } else {
+			    	final_rem = remainder.toString();
+			    }
+
+			    final_price = "$" + Math.floor(total_price/1000) + "," + final_rem;
+
+			    document.getElementById("total-price").value = final_price;
+
+			}
+
+			function changeColor() {
+
+				var color = document.getElementById("car-color").value;
+				if (color == "black") {
+					document.getElementById("car-photo").src="black.jpg";
+				} else if (color == "white") {
+					document.getElementById("car-photo").src="white.jpg";
+				} else if (color == "silver") {
+					document.getElementById("car-photo").src="silver.jpg";
+				} else if (color == "blue") {
+					document.getElementById("car-photo").src="blue.jpg";
+				} else if (color == "red") {
+					document.getElementById("car-photo").src="red.jpg";
+				}
+
+			}
+
+		</script>
+
+	</head>
+
+	<body>
+
+		<div id="main">
+
+			<h1> Configure Your GT Super Sportcar </h1>
+
+			<div id="leftcol">
+
+				<div class="box">
+
+					<h3 class="header"> Configuration </h3>
+
+					<div class="contents">
+
+						<form id="configuration-form">
+							<input type="radio" name="configuration" value="17790" checked="checked"> GT Manual <span class="price"> $17,790.00 </span> <br>
+							<input type="radio" name="configuration" value="18590"> GT Automatic <span class="price"> $18,590.00 </span> <br>
+							<input type="radio" name="configuration" value="22455"> GT Manual <span class="price"> $22,455.00 </span> <br>
+							<input type="radio" name="configuration" value="23155"> GT Automatic <span class="price"> $23,155.00 </span>
+						</form>
+
+					</div>
+
+				</div>
+
+				<div class="box">
+
+					<h3 class="header"> Factory Options </h3>
+
+					<div class="contents">
+
+						<form id="combo-form">
+							<input type="radio" name="factory" value="1235"> Option Combo #1 <span class="price"> $1,235.00 </span> <br>
+								<ul>
+									<li> Power Windows, Doors, Cruise Control </li>
+						  		</ul>
+							<input type="radio" name="factory" value="3354"> Option Combo #2 <span class="price"> $3,354.00 </span> <br>
+								<ul>
+									<li> Rear Spoiler and Fog Lamps </li>
+									<li> Keyless Entry </li>
+									<li> Power Tilt and Slide Moonroof </li>
+									<li> Power Windows, Doors, Cruise Control </li>
+						  		</ul>
+							<input type="radio" name="factory" value="0" checked="checked"> No Combo <span class="price"> $0 </span>
+						</form>
+
+					</div>
+
+				</div>
+
+				<div class="box">
+
+					<h3 class="header"> Dealer Options </h3>
+
+					<div class="contents">
+
+						<form id="dealer-form">
+							<input type="checkbox" name="dealer" value="550"> Upgrage Stereo System <span class="price"> $550 </span> <br>
+							<input type="checkbox" name="dealer" value="399"> VIP Security System <span class="price"> $399 </span> <br>
+							<input type="checkbox" name="dealer" value="295"> Auto-Dimming Mirror <span class="price"> $295 </span>
+						</form>
+
+					</div>
+
+				</div>
+
+				<div class="box">
+
+					<h3 class="header"> Total Price </h3>
+
+					<div class="contents">
+
+						<form>
+							<input type="text" id="total-price" value="">
+							<button type="button" onclick="calculateTotal()"> Calculate Total </button>
+						</form>
+
+					</div>
+
+				</div>
+
+			</div>
+
+			<div id="rightcol">
+
+				<div class="box" id="car-box">
+
+					<h3 class="header"> Choose A Color </h3>
+
+					<div class="contents">
+
+						<select id="car-color" onchange="changeColor()">
+							<option value="black" selected="selected"> BLACK </option>
+							<option value="blue"> BLUE </option>
+							<option value="red"> RED </option>
+							<option value="silver"> SILVER </option>
+							<option value="white"> WHITE </option>
+						</select>
+
+						<img id="car-photo" src="black.jpg" alt="car" width="250" height="100" />
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</body>
+
+</html>

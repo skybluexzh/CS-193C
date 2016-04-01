@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Time of Day Around the World</title>
+<style type="text/css">
+
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+#timePopup {
+	position: absolute;
+	width: 200px; 
+	height: 50px;
+	visibility: hidden;
+	padding: 5px;
+	border: solid thin red;
+	background: white;
+}
+
+body {
+	font-family: sans-serif;
+}
+
+h2 {
+	font-weight: bold;
+	font-size: 12pt;
+	margin: 0px;
+	padding: 0px;
+}
+
+p {
+	font-size: 10pt;
+}
+
+</style>
+</head>
+<body>
+<div>
+<img id="world" src="world.png" alt="World Map" title="" />
+</div>
+
+<div id="timePopup">
+<h2 id="location">Stanford, California</h2>
+<p id="time">8:00 am</p>
+</div>
+
+<script>
+
+var cityArray = [
+	{name: "Stanford, California", coords: [121, 135], timeDiff: -7},
+	{name: "London, United Kingdom", coords: [463, 96], timeDiff: 1},
+	{name: "Pisa, Italy", coords: [490, 121], timeDiff: 2},
+	{name: "Tokyo, Japan", coords: [852, 145], timeDiff: +9}];
+	
+var mapImage = document.getElementById("world");
+
+var popupVisible = false;
+
+function trackMove(evt) {
+	for (var i=0; i<cityArray.length; i++) {
+	  if ((Math.abs(evt.clientX - cityArray[i].coords[0]) <= 10)
+			&& (Math.abs(evt.clientY - cityArray[i].coords[1]) <= 10)) {
+		showPopup(evt,i);
+		return;
+	  }
+	}
+	
+	hidePopup();
+}
+
+function showPopup(event,cityIndex) {
+	popupVisible = true;
+
+	var time = new Date();
+	var hour = (time.getUTCHours() + cityArray[cityIndex].timeDiff) % 24;
+	var minutes = time.getUTCMinutes();
+	
+	popup = document.getElementById("timePopup");
+	popup.style.visibility = "visible";
+	document.getElementById("location").innerHTML = cityArray[cityIndex].name;
+	document.getElementById("time").innerHTML = hour + ":" + minutes;
+	
+	popup.style.left = (event.clientX - 5) + "px";
+	popup.style.top = (event.clientY - 5) + "px";
+}
+
+function hidePopup(event) {
+	popupVisible = false;
+	popup = document.getElementById("timePopup");
+	popup.style.visibility = "hidden";
+}
+	
+document.getElementById("world").onmousemove = trackMove;
+// document.getElementById("timePopup").onmousemove = hidePopup;
+
+</script>
+</body>
+</html>

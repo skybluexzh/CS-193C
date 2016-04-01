@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+<meta charset="UTF-8" />
+<title></title>
+<script src="angular.js"></script>
+</head>
+<body ng-init="dorms=[{name: 'FloMo',capacity: 470},
+                      {name: 'Wilbur', capacity: 700 },
+					  {name: 'Stern', capacity: 600},
+					  {name: 'Lag', capacity: 400}];">
+<h1>Stanford Dorms</h1>
+<div ng-repeat="dorm in dorms">
+<h2>{{dorm.name}}</h2>
+<p>{{dorm.name}} houses {{dorm.capacity}} students.</p>
+</div>
+</body>
+</html>

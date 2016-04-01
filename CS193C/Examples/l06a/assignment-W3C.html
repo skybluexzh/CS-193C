@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Assignment Example</title>
+</head>
+<body>
+<div>
+<input id="theButton" value="Press Me" type="button" />
+</div>
+
+<p>This is W3C compliant code but will not run in Internet Explorer prior to IE9.
+Depending on user settings it may or may not work properly in IE9.</p>
+
+<script>
+
+function handleButton() {
+	alert("Go Stanford!");
+}
+
+function secondHandle() {
+	alert("Go Cardinal!");
+}
+
+document.getElementById("theButton").addEventListener("click",handleButton,false);
+document.getElementById("theButton").addEventListener("click",secondHandle,false);
+
+</script>
+
+</body>
+</html>

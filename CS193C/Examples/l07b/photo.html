@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Photo Tagging</title>
+<style>
+#thePhoto {float: left;
+	padding-right: 15px;}
+.tag {
+	border: 5px solid blue;
+	color: white;
+}
+</style>
+
+</head>
+<body>
+<img id="thePhoto" src="example.jpg" alt="photo" />
+<h2>Tag Entry</h2>
+<form id="entry">
+Name: <input type="text" name="name" id="tagName" />
+      <input id="addButton" type="button" value="Add Tag" />
+</form>
+
+<h2>Display Options</h2>
+<p>
+Show Tags <input type="radio" name="show" checked="checked" onclick="showTags();" /> 
+Hide Tags <input type="radio" name="show" onclick="hideTags();" /> <br />
+</p>
+
+<p id="extras">
+</p>
+
+<script>
+
+var addingTag = false;
+
+function addTag() {
+	addingTag = true;
+	document.documentElement.style.cursor = "crosshair";
+	document.getElementById("thePhoto").style.cursor = "crosshair";
+}
+
+var startX, startY;
+
+function mouseDown(evt) {
+	if (!addingTag) return;
+	
+	startX = evt.clientX;
+	startY = evt.clientY;
+	document.documentElement.style.cursor = "move";
+	document.getElementById("thePhoto").style.cursor = "move";
+	return false;
+}
+
+function mouseUp(evt) {
+	if (!addingTag) return;
+	
+	document.getElementById("extras").innerHTML +=
+		"<div class='tag' style='position: absolute; left: " + startX + "px; top: " + startY + "px; width: " +
+			(evt.clientX - startX) + "px; height: " + (evt.clientY - startY) + "px'>"
+		+ document.getElementById("tagName").value + "</div>";
+		
+	console.log("<div class='tag' style='position: absolute; left: " + startX + "px; top: " + startY + "px; width: " +
+			(evt.clientX - startX) + "px; height: " + (evt.clientY - startY) + "'>"
+		+ document.getElementById("tagName").value + "</div>");
+	
+	document.documentElement.style.cursor = "default";
+	document.getElementById("thePhoto").style.cursor = "default";
+	addingTag = false;
+}
+
+document.getElementById("addButton").onclick = addTag;
+
+window.onmousedown = mouseDown;
+window.onmouseup = mouseUp;
+
+function hideTags() {
+	var tags = document.getElementsByTagName("div");
+	console.log("hiding " + tags.length + " tags");
+	for(var i=0; i<tags.length; i++) {
+		var currDiv = tags[i];
+		currDiv.style.display = "none";
+	}
+}
+
+function showTags() {
+	var tags = document.getElementsByTagName("div");
+	for(var i=0; i<tags.length; i++) {
+		var currDiv = tags[i];
+		currDiv.style.display = "block";
+	}
+}
+
+</script>
+</body>
+</html>

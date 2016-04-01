@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Test</title>
+<script>
+
+function StanfordPerson() {
+	this.school = "Stanford";
+}
+
+function StanfordStudent(name) {
+	this.name = name;
+}
+
+StanfordStudent.prototype = new StanfordPerson();
+
+function StanfordEmployee(name,salary) {
+	this.name = name;
+	this.salary = salary;
+}
+
+StanfordEmployee.prototype = new StanfordPerson();
+
+var john = new StanfordStudent("John");
+var mary = new StanfordEmployee("Mary",100000);
+var kate = new StanfordEmployee("Kate",120000);
+
+console.log(john.x);
+console.log(john.school);
+
+console.log(mary.name);
+console.log(mary.school);
+
+mary.school = "Harvard";
+console.log(mary.school);
+console.log(kate.school);
+
+StanfordEmployee.prototype.school = "Leland Stanford";
+console.log(kate.school);
+console.log(john.school);
+
+</script>
+<style>
+</style>
+</head>
+<body>
+</body>
+</html>

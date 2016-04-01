@@ -1,0 +1,21 @@
+* {
+	font-family: sans-serif;
+}
+
+img {
+	float: left;
+	margin-right: 10px;
+}
+
+h1 {
+	text-align: center;
+}
+
+a:hover {
+	color:red;
+}
+
+.Stanford {
+	color: red;
+	font-weight: bold;
+}

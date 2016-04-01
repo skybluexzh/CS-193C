@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+<meta charset="UTF-8" />
+<title></title>
+<script src="angular.js"></script>
+<script src="controller-basic.js"></script>
+</head>
+<body>
+<div ng-controller="myController">
+Name: <input type="text" ng-model="searchitem.name" /> <br />
+Capacity: <input type="text" ng-model="searchitem.capacity" /> 
+
+<ul>
+<li ng-repeat="dorm in dorms | filter: searchitem">{{dorm.name}}: {{dorm.capacity}}</li>
+</ul>
+</div>
+</body>
+</html>

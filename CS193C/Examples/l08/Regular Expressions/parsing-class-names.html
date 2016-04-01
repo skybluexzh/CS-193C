@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Parsing Class Names</title>
+</head>
+
+<body>
+<h1>Parsing Class Names Example</h1>
+<form id="main">
+<table>
+<tr><td>Enter Name</td>
+    <td><input type="text" name="name" /></td>
+	<td><input type="button" value="Parse" onclick="parseClass();" /></td></tr>
+<tr><td>Department</td>
+    <td><input type="text" name="department" /></td><td></td></tr>
+<tr><td>Number</td>
+    <td><input type="text" name="number" /></td><td></td></tr>
+<tr><td>Letter</td>
+    <td><input type="text" name="letter" /></td><td></td></tr>
+</table>
+</form>
+
+<script>
+
+function parseClass() {
+  var theForm = document.getElementById("main");
+  var name=theForm.name.value;
+  
+  name.search(/(\D+)(\d+)(\D*)/);
+  theForm.department.value=RegExp.$1;
+  theForm.number.value=RegExp.$2;
+  theForm.letter.value=RegExp.$3;
+}
+
+</script>
+</body>
+</html>

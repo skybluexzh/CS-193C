@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Some Accordians</title>
+<link href="css/blitzer/jquery-ui-1.10.3.custom.css" rel="stylesheet">
+<script src="js/jquery-1.9.1.js"></script>
+<script src="js/jquery-ui-1.10.3.custom.js"></script>
+<script>
+function disableOne() {
+	$( "#firstAccordian" ).accordion("disable");
+}
+
+function enableOne() {
+	$( "#firstAccordian" ).accordion("enable");
+}
+
+$(function() {
+
+		$( "#firstAccordian" ).accordion();
+		$( "#anotherAccordian" ).accordion({collapsible: true, active: 1});
+				// active determines which element is initially open
+
+		$("#DisableBtn").bind("click",disableOne);
+		$("#EnableBtn").bind("click",enableOne);
+	});
+</script>
+</head>
+<body>
+<p>Text from Wikipedia</p>
+<div id="firstAccordian">
+<h2>Tiger</h2>
+<div>The tiger (Panthera tigris) is the largest cat species, reaching a total body length of up to 3.3 m (11 ft) and weighing up to 306 kg (670 lb). It is the third largest land carnivore (behind only the polar bear and the brown bear).</div>
+<h2>Lion</h2>
+<div>The lion (Panthera leo) is one of the four big cats in the genus Panthera and a member of the family Felidae. With some males exceeding 250 kg (550 lb) in weight,[4] it is the second-largest living cat after the tiger.</div>
+<h2>Cheetah</h2>
+<div>The cheetah (Acinonyx jubatus) is a large feline (family Felidae, subfamily Felinae) inhabiting most of Africa and parts of the Middle East. It is the only extant member of the genus Acinonyx. The cheetah can run faster than any other land animal - as fast as 112 to 120 km/h (70 to 75 mph)</div>
+</div>
+
+<p>Another Example</p>
+<div id="anotherAccordian">
+<h6>Indian Elephant</h6>
+<div>
+<p>The Indian elephant (Elephas maximus indicus) is one of three recognised subspecies of the Asian elephant and native to mainland Asia.</p>
+<p>In general, Asian elephants are smaller than African elephants and have the highest body point on the head. The tip of their trunk has one finger-like process.<p/>
+</div>
+<h6>African Elephant</h6>
+<div>
+<p>African elephants are the elephants of the genus Loxodonta (Greek for 'oblique-sided tooth'), consisting of two extant species: the African bush elephant and the smaller African forest elephant. </p>
+<p>One of the species of African elephant, the bush elephant, is the largest living terrestrial animal, while the forest elephant is the third largest. <p/>
+</div>
+</div>
+<input type="button" value="Disable" id="DisableBtn" />
+<input type="button" value="Enable" id="EnableBtn" />
+
+</body>
+</html>

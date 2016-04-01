@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Calendar</title>
+<style>
+* {
+	font-family: sans-serif;
+	margin: 0px;
+	padding: 0px;
+}
+#calendar {
+	float: left;
+	padding: 10px;
+	/*width: 790px;*/
+}
+.day {
+	width: 150px;
+	height: 300px;
+	border: solid black 1px;
+	padding: 3px;
+	float: left;
+}
+
+.dayTitle {
+	color: white;
+	background-color: black;
+}
+
+.selected .dayTitle {
+	color: white;
+	background-color: red;
+}
+
+.appt {
+	padding: 10px 5px;
+}
+
+h1 {
+	margin: 15px 10px;
+}
+
+h2 {
+	text-align: center;
+	padding: 10px 0px;
+}
+
+h3 {
+	padding-bottom: 10px;
+}
+
+.endPanelDiv {
+
+}
+
+#controls {
+	float: left;
+	padding: 15px;
+}
+</style>
+</head>
+<body>
+<h1>Weekly Calendar</h1>
+
+<div id="calendar">
+<div class="day">
+<div class="dayTitle">
+<h2>Monday</h2>
+</div>
+</div>
+<div class="day">
+<div class="dayTitle">
+<h2>Tuesday</h2>
+</div>
+</div>
+<div class="day">
+<div class="dayTitle">
+<h2>Wednesday</h2>
+</div>
+</div>
+<div class="day">
+<div class="dayTitle">
+<h2>Thursday</h2>
+</div>
+</div>
+<div class="day">
+<div class="dayTitle">
+<h2>Friday</h2>
+</div>
+</div>
+</div>
+<div id="controls">
+<h3>Set Appointment</h3>
+Name: <input type="text" id="apptName" /> <input type="button" id="apptBtn" value="Set" />
+</div>
+
+<p style="clear: both; padding: 10px;">Grade me in Chrome please!</p>
+
+<script>
+var currDay = null;
+
+function selectDay(evt) {	
+	var currElem = evt.currentTarget;
+
+	if (currDay) {
+		currDay.setAttribute('class','day');
+	}
+	
+	currElem.setAttribute('class','day selected');
+	currDay = currElem;
+	evt.stopPropagation();
+}
+
+var theDivs = document.getElementsByTagName("div");
+
+for(var i=0; i<theDivs.length; i++) {
+	if (theDivs[i].getAttribute('class') == 'day') {
+		theDivs[i].onclick = selectDay;
+		theDivs[i].initInner = theDivs[i].innerHTML;
+	}
+}
+
+function setAppointment() {
+	currDay.innerHTML = currDay.initInner 
+			+ "<p class='appt'>" + document.getElementById("apptName").value + "</p>";
+}
+
+function clearSelect() {
+	if (currDay) {
+		currDay.setAttribute('class','day');
+	}
+	currDay = null;
+}
+
+function textClick(evt) {
+	evt.stopPropagation();
+}
+
+window.onclick=clearSelect;
+
+document.getElementById("apptBtn").onclick = setAppointment;
+document.getElementById("apptName").onclick = textClick;
+
+</script>
+</body>
+</html>

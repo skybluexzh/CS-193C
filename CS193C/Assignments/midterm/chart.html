@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+
+		<meta charset="UTF-8" />
+
+		<title> Bar Chart </title>
+
+		<style type="text/css">
+
+			#chart {
+				width: 400px;
+				height: 200px;
+				border: 1px solid black;
+			}
+
+			table, th, td {
+				border: 1px solid black;
+				border-collapse: collapse;
+				padding: 5px;
+			}
+
+		</style>
+
+	</head>
+
+	<body>
+
+		<h1> Bar Chart </h1>
+
+		<div>
+
+			Label: <input type="text" id="label">
+
+			<br>
+
+			<select id="color">
+				<option value="green" selected="selected"> Green </option>
+				<option value="blue"> Blue </option>
+				<option value="gray"> Gray </option>
+				<option value="red"> Red </option>
+				<option value="silver"> Silver </option>
+				<option value="yellow"> Yellow </option>
+			</select>
+
+			<br>
+
+			Amount: <input type="text" id="amount">
+
+			<button id="entry" type="button" onclick="addEntry()"> Add Entry </button>
+
+			<br>
+
+		</div>
+
+		<br>
+
+		<div id="chart">
+
+		</div>
+
+		<br>
+
+		<div>
+
+			<table id="table">
+				<tr>
+					<th> Label </th>
+					<th> Amount </th>
+				</tr>
+			</table>
+
+		</div>
+
+		<p> ** please grade me in chrome ** </p>
+
+		<script type="text/javascript">
+
+			function getDivHeight() {
+				var div = document.getElementById("chart");
+				return parseInt(div.offsetHeight);
+			}
+
+			function getDivWidth() {
+				var div = document.getElementById("chart");
+				return parseInt(div.offsetWidth);
+			}
+
+			var width = getDivWidth();
+			var height = getDivHeight();
+
+			var arr = new Array();
+
+			function clearDiv() {
+				var div = document.getElementById("chart");
+				while(div.hasChildNodes()) {
+					div.removeChild(div.firstChild);
+				}
+			}
+
+			function addToChart() {
+				clearDiv();
+				for (var i = 0; i < arr.length; i++) {
+					var div = document.createElement('div');
+					div.style.width = width * arr[i].amount / 100 + "px";
+					div.style.height = height / arr.length + "px";
+					div.style.top = height * i / arr.length;
+					div.style.background = arr[i].color;
+					document.getElementById("chart").appendChild(div);
+				}
+			}
+
+			function addToArray() {
+				var entry = {
+				    label: document.getElementById("label").value,
+				    color: document.getElementById("color").value,
+				    amount: parseInt(document.getElementById("amount").value)
+				};
+				arr.push(entry);
+			}
+
+			function addToTable() {
+				var table = document.getElementById("table");
+				var row = table.insertRow(-1);
+				row.style.background = arr[arr.length - 1].color;
+				var cell_one = row.insertCell(-1);
+				cell_one.innerHTML = arr[arr.length - 1].label;
+				var cell_two = row.insertCell(-1);
+				cell_two.innerHTML = arr[arr.length - 1].amount;
+			}
+
+			function addEntry() {
+				addToArray();
+				addToChart();
+				addToTable();
+			}
+
+		</script>
+
+	</body>
+
+</html>

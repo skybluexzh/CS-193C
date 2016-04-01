@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+<meta charset="UTF-8" />
+<title></title>
+<script src="angular.js"></script>
+<script src="controller-two.js"></script>
+</head>
+<body>
+<div ng-controller="myController">
+<ul>
+<li ng-repeat="dorm in dorms">{{dorm.name}}: {{dorm.capacity}}</li>
+</ul>
+</div>
+<div ng-controller="uciController">
+<ul>
+<li ng-repeat="dorm in dorms">{{dorm.name}}: {{dorm.capacity}}</li>
+</ul>
+</div>
+</body>
+</html>

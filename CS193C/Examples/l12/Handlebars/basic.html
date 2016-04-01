@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title></title>
+</head>
+<body>
+<script src="handlebars-v1.3.0.js">
+</script>
+<script id="example" type="text/x-handlebars-template">
+<p>I live in {{dorm}} dorm.  I am a {{year}} year student.</p>
+</script>
+<script>
+var theData = {dorm: "FloMo", year: "4th"};
+var theTemplateScript = document.getElementById("example").innerHTML;
+var theTemplate = Handlebars.compile (theTemplateScript);
+document.writeln(theTemplate(theData));
+</script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+
+		<meta charset="UTF-8" />
+
+		<title> Yes or No </title>
+
+		<style type="text/css">
+
+		h1 {
+			font-size: 36pt;
+			font-family: sans-serif;
+		}
+
+		#left {
+			border: 2px solid green;
+			float: left;
+			font-family: serif;
+		}
+
+		#right {
+			border: 2px solid red;
+			float: left;
+			font-family: serif;
+		}
+
+		#label {
+			float: left;
+			clear: left;
+			font-weight: bold;
+			font-size: 14pt;
+			font-family: sans-serif;
+		}
+
+		#note {
+			float: left;
+			clear: left;
+		}
+
+		</style>
+
+	</head>
+
+	<body onresize="handleResize()">
+
+		<h1> Yes or No? </h1>
+
+		<div id="left" onclick="leftClicked()">
+
+			<h3> Yes </h3>
+
+		</div>
+
+		<div id="right" onclick="rightClicked()">
+
+			<h3> No </h3>
+
+		</div>
+
+		<p id="label"> Undecided </p>
+
+		<p id="note"> ** please grade me in chrome ** </p>
+
+		<script type="text/javascript">
+
+			function leftClicked() {
+				var left = document.getElementById("left");
+				left.style.background = "green";
+				var right = document.getElementById("right");
+				right.style.background = "white";
+				var para = document.getElementById("label");
+				para.innerHTML = "Yes";
+			}
+
+			function rightClicked() {
+				var left = document.getElementById("left");
+				left.style.background = "white";
+				var right = document.getElementById("right");
+				right.style.background = "red";
+				var para = document.getElementById("label");
+				para.innerHTML = "No";
+			}
+
+			function handleResize(evt) {
+				var left = document.getElementById("left");
+				left.style.width = window.outerWidth / 3 + "px";
+				left.style.height = window.outerWidth / 3 + "px";
+
+				var right = document.getElementById("right");
+				right.style.width = window.outerWidth / 3 + "px";
+				right.style.height = window.outerWidth / 3 + "px";
+			}
+
+			function getDivWidth() {
+				var div = document.getElementById("left");
+				return parseInt(window.outerWidth / 3);
+			}
+
+			function getDivTop() {
+				var div = document.getElementById("left");
+				return parseInt(div.offsetTop);
+			}
+
+			function getDivLeft() {
+				var div = document.getElementById("left");
+				return parseInt(div.offsetLeft);
+			}
+
+			function isOutBox(x, y) {
+				var l = getDivLeft();
+				var r = getDivLeft() + 2 * getDivWidth();
+				var t = getDivTop();
+				var b = getDivTop() + getDivWidth();
+				// alert(l + ", " + r + ", " + t + ", " + b + ", " + x + ", " + y);
+				return (x < l || x > r || y < t || y > b);
+			}
+
+			function handleOnclick(evt) {
+				if (isOutBox(evt.clientX, evt.clientY)) {
+					var left = document.getElementById("left");
+					left.style.background = "white";
+					var right = document.getElementById("right");
+					right.style.background = "white";
+					var para = document.getElementById("label");
+					para.innerHTML = "Undecided";
+				}
+			}
+
+			var left = document.getElementById("left");
+			left.style.width = window.outerWidth / 3 + "px";
+			left.style.height = window.outerWidth / 3 + "px";
+
+			var right = document.getElementById("right");
+			right.style.width = window.outerWidth / 3 + "px";
+			right.style.height = window.outerWidth / 3 + "px";
+
+			document.onclick = handleOnclick;
+
+		</script>
+
+	</body>
+
+</html>

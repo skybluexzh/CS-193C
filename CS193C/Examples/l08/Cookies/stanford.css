@@ -1,0 +1,11 @@
+/* Stanford CSS */
+
+body {
+	color: white;
+	background-color: #CC0000;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+a:visited {
+	color: white;
+}

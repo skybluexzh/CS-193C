@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Color Picker Website</title>
+<style>
+body {font-family: sans-serif}
+.title {font-size: 12pt; font-weight: bold}
+</style>
+<script>
+
+function changeColors() {
+    document.fgColor = document.getElementById("main").foreground.value;
+    document.bgColor = document.getElementById("main").background.value;
+}
+
+</script>
+</head>
+
+<body>
+<h1>Color Picker Website</h1>
+
+<div>
+<form id="main">
+<table>
+<tr><td class="title">Foreground</td>
+    <td><input type="text" name="foreground" onchange="changeColors()" /></td></tr>
+<tr><td class="title">Background</td>
+    <td><input type="text" name="background" onchange="changeColors()" /></td></tr>
+</table>
+</form>
+</div>
+
+</body>
+</html>

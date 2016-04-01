@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Test</title>
+<script>
+function Pair(a, b) {
+	this.a = a;
+	this.b = b;
+	this.sum = function() {
+				console.log(this.a + this.b);
+			};
+	this.difference = function() {
+				console.log(this.a - this.b);
+			};
+}
+
+var pairOne = new Pair(12,8);
+var pairTwo = new Pair(5,10);
+
+pairOne.sum();
+pairTwo.difference();
+
+</script>
+<style>
+</style>
+</head>
+<body>
+</body>
+</html>

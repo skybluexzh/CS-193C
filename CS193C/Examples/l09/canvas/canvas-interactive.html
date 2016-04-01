@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Canvas Example</title>
+<style>
+#theCanvas {
+	border: solid 1px black;
+}
+</style>
+</head>
+<body>
+<canvas id="theCanvas" width="640" height="480">
+Your web browser does not support the &lt;canvas&gt; element.
+</canvas>
+<form id="rectInfo">
+<table>
+<tr><td>X</td>
+	<td><input name="x" type="text" /></td>
+	<td></td></tr>
+<tr><td>Y</td>
+	<td><input name="y" type="text" /></td>
+	<td></td></tr>
+<tr><td>Width</td>
+	<td><input name="width" type="text" /></td>
+	<td></td></tr>
+<tr><td>Height</td>
+	<td><input name="height" type="text" /></td>
+	<td><input type="button" value="Create Rect" onclick="createRect();" /></td><td><input type="button" value="Resize Canvas" onclick="resizeCanvas();"</tr>
+</table>
+</form>
+
+<script>
+
+var theCanvas = document.getElementById("theCanvas");
+var theContext = theCanvas.getContext("2d");
+var theForm = document.getElementById("rectInfo");
+
+function createRect() {
+	theContext.fillStyle = "#cc0000";
+	theContext.fillRect(theForm.x.value,theForm.y.value,
+					theForm.width.value,theForm.height.value);
+}
+
+function resizeCanvas() {
+	theCanvas.width = theForm.width.value;
+	theCanvas.height = theForm.height.value;
+}
+
+</script>
+</body>
+</html>

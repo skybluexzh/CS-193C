@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Canvas Example</title>
+<style>
+#theCanvas {
+	border: solid 1px black;
+}
+</style>
+</head>
+<body>
+<canvas id="theCanvas" width="640" height="480">
+Your web browser does not support the &lt;canvas&gt; element.
+</canvas>
+
+<script>
+
+var theCanvas = document.getElementById("theCanvas");
+var theContext = theCanvas.getContext("2d");
+
+theContext.fillStyle = "rgb(255,0,0)";
+theContext.fillRect(20,20,100,100);
+
+theContext.strokeStyle = "rgb(100,100,100)";
+theContext.lineWidth = 5;
+theContext.strokeRect(80,80,100,100);
+
+theContext.strokeStyle = "#FFAA00"; // can use any CSS color spec
+theContext.fillStyle = "SlateBlue";
+theContext.lineWidth = 15;
+theContext.lineCap = "round";
+
+theContext.beginPath();
+theContext.moveTo(20,200);
+theContext.lineTo(120,300);
+theContext.lineTo(20,300);
+theContext.stroke();
+theContext.fill();
+
+</script>
+</body>
+</html>

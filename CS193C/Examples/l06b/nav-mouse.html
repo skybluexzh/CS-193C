@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Event Test</title>
+<script>
+function testFunc(event) {
+    var output="sx=" + event.screenX + "; sy=" + event.screenY + "\n" +
+             "cx=" + event.clientX + "; cy=" + event.clientY + "\n" +
+		     "button=" + event.button + "\n";
+    if(event.shiftKey) output = output + "shift ";
+    if(event.altKey) output = output + "alt ";
+    if(event.ctrlKey) output = output + "ctrl ";
+    alert(output);
+}
+</script>
+</head>
+
+<body>
+<h1 onmousedown="testFunc(event);">DOM Mouse Example</h1>
+
+
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Stanford Performing Arts</title>
+<script>
+var events = [
+	{name: "Harmony for Humanity: Daniel Pearl World Music Concert",
+	 date: "October 6, 8pm",
+	 location: "Memorial Church"},
+	{name: "Sphinx Virtuosi and Catalyst Quartet ",
+	 date: "October 19, 8pm",
+	 location: "Dinkelspiel Auditorium"},
+	{name: "Sundays with the St. Lawrence String Quartet",
+	 date: "October 23, 8pm",
+	 location: "Dinkelspiel Auditorium"},
+	{name: "Merce Cunningham Dance Company ",
+	 date: "November 1, 8pm",
+	 location: "Memorial Auditorium"},
+	{name: "Jazz @ the Cantor with Loren Schoenberg",
+	 date: "November 9, Noon",
+	 location: "Cantor Arts Center"},
+	{name: "Juilliard String Quartet ",
+	 date: "December 4, 2:30pm",
+	 location: "Dinkelspiel Auditorium"},
+	{name: "A Chanticleer Christmas",
+	 date: "December 13, 8pm",
+	 location: "Memorial Church"}
+  ];
+  
+var currTop = 0;
+
+function changeItems() {
+	currTop = (currTop + 1) % events.length;
+	
+	var announces = document.getElementsByTagName("span");
+	// alert("In changeItems with currTop = " + currTop + "\nidentified announces: " + announces.length);
+	for(var i=0; i<announces.length; i++) {
+		announces[i].innerHTML = events[(currTop + i) % events.length].name;
+	}
+}
+
+function setInfoText(index) {
+	data = events[(index + currTop) % events.length];
+	document.getElementById("title").innerHTML = data.name;
+	document.getElementById("dateTime").innerHTML = data.date;
+	document.getElementById("location").innerHTML = data.location;
+}
+
+var intervalID;
+
+function haltScroll() {
+	if (intervalID)
+		clearInterval(intervalID);
+}
+function startScroll() {
+	intervalID = setInterval(changeItems,3000);
+}
+</script>
+<style>
+.col { float: left; }
+.summary {width: 200px;
+		  height: 80px;
+		  margin: 10px;
+		  padding: 5px;
+		  font-weight: bold;
+		  font-family: sans-serif;
+          clear: both;
+		  border: 1px solid black;
+}
+#info {
+	width: 450px;
+	margin: 10px;
+	padding: 5px;
+	border: 1px solid black;
+}
+#title {
+	font-size: 18pt;
+	font-weight: bold;
+}
+#dateTime {
+	font-size: 12pt;
+	font-weight: bold;
+	font-family: sans-serif;
+	margin: 10px 0px;
+	font-style: italic;
+}
+#location {
+	font-size: 12pt;
+	font-weight: bold;
+	font-family: sans-serif;
+	margin: 10px 0px;
+}
+</style>
+</head>
+<body onload="startScroll();">
+<div id="leftCol" class="col">
+<div class="summary" onmouseover="haltScroll(); setInfoText(0); "
+					 onmouseOut="startScroll();"><span>
+<script>
+document.writeln(events[0].name);
+</script>
+</span></div>
+<div class="summary" onmouseover="haltScroll(); setInfoText(1); "
+					 onmouseOut="startScroll();"><span>
+<script>
+document.writeln(events[1].name);
+</script>
+</span></div>
+<div class="summary" onmouseover="haltScroll(); setInfoText(2); "
+					 onmouseOut="startScroll();">
+<span>
+<script>
+document.writeln(events[2].name);
+</script>
+</span></div>
+</div>
+<div id="info" class="col">
+<div id="title"></div>
+<div id="dateTime"></div>
+<div id="location"></div>
+</div>
+
+<script>
+setInfoText(0);
+</script>
+</body>
+</html>

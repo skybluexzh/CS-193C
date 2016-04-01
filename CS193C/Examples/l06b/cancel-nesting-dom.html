@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Nesting Example</title>
+<script>
+function cancel(event) {
+    alert('canceling');
+    event.stopPropagation();  // this still won't work in IE9, since we didn't assign handler using addEventListener
+}
+</script>
+</head>
+
+<body onclick="alert('body clicked');">
+<div onclick="alert('part one div clicked');">
+<h1>Part One</h1>
+<p onclick="cancel(event); alert('paragraph one clicked');">A paragraph in part one</p>
+<p onclick="alert('paragraph two clicked');">Another paragraph in part one</p>
+</div>
+<div>
+<h1>Part Two</h1>
+<p>A paragraph in part two</p>
+<p>Another paragraph in part two</p>
+</div>
+</body>
+</html>

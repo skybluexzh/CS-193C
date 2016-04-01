@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Forms Verification</title>
+</head>
+<body>
+<h1>Order Form</h1>
+<form id="main" onsubmit="return verify();">
+  <table>
+  <tr><td>Name:</td>
+      <td><input name="name" type="text" size="20" /></td>
+      <td></td>
+  </tr>
+  <tr><td>Credit Card:</td>
+      <td><input name="credit" type="text" size="20" /></td>
+      <td><input type="submit" value="Submit Order" /></td>
+  </tr>
+  </table>
+</form>
+
+<script>
+
+function isDigit(character) {
+  return (character >= "0") && (character <= "9");
+}
+
+function verify() {
+  var theForm = document.getElementById("main");
+  var credit = theForm.credit.value;
+
+  if (credit.length != 16) {
+    alert("Your credit card number is incomplete.");
+    return false;
+  }
+  for (var i = 0; i < credit.length; i++) {
+    if (!isDigit(credit.charAt(i))) {
+      alert("Your credit card number should contain only numbers.");
+      return false;
+    }
+  }
+  alert("Thank you for your order.");
+}
+
+</script>
+</body>
+</html>
+

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Drag Example</title>
+<style>
+
+#image {
+	position: absolute;
+	left: 110px;
+	top: 50px;
+}
+
+#dropzone {
+	height: 120px;
+	width: 160px;
+	border: 10px solid grey;
+	position: absolute;
+	left: 100px;
+	top: 200px;
+}
+</style>
+</head>
+<body>
+<img src="mollys.jpg" alt="image" id="image" draggable="true" />
+
+<div id="dropzone">
+</div>
+<script>
+function dropped(evt) {
+	evt.preventDefault();
+	document.getElementById("image").style.visibility = "hidden";
+	document.getElementById("dropzone").style.backgroundImage
+	    = "url('mollys.jpg')";
+}
+
+function allowdrag(evt) {
+	evt.preventDefault();
+}
+
+var dropzone = document.getElementById("dropzone");
+dropzone.ondrop = dropped;
+dropzone.ondragover = allowdrag;
+</script>
+</body>
+</html>

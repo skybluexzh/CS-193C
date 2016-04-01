@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Name Changer</title>
+</head>
+<body>
+<h1>Name Changer</h1>
+
+<p>Enter name as last name, followed by a comma, followed by first name.
+This program converts name to first name, last name format.</p>
+
+<form id="main">
+<table>
+<tr><td>Original:</td>
+    <td><input type="text" size="30" name="original" /></td>
+    <td></td>
+</tr>
+<tr><td>Reformatted:</td>
+    <td><input type="text" size="30" name="reformatted" /></td>
+    <td><input type="button" value="Convert" onclick="convert();" /></td>    
+</tr>
+</table>
+</form>
+
+<script>
+
+function convertName(originalName) {
+  var commaIndex = originalName.indexOf(",");
+
+  if (commaIndex == -1) return originalName;
+
+  var lastName = originalName.substring(0,commaIndex);
+  var firstName = originalName.substring(commaIndex + 2,originalName.length);
+
+  return firstName + " " + lastName;
+}
+
+function convert() {
+  var theForm = document.getElementById("main");
+  theForm.reformatted.value = convertName(theForm.original.value);
+}
+
+</script>
+</body>
+</html>

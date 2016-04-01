@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Price Reader</title>
+</head>
+<body>
+<h1>Price Reader</h1>
+<p>Converts a price including dollar signs and commas to its equivalent numeric
+value.</p>
+<form id="main">
+<table>
+<tr><td>Original:</td>
+    <td><input type="text" size="30" name="original" /></td>
+    <td></td>
+</tr>
+<tr><td>Number:</td>
+    <td><input type="text" size="30" name="number" /></td>
+    <td><input type="button" value="Convert" onclick="convert();" /></td>    
+</tr>
+</table>
+</form>
+
+<script>
+
+function isDigit(character) {
+  return (character >= "0" && character <= "9");
+}
+
+function isDecimalPoint(character) {
+  return (character == ".");
+}
+
+function parsePrice(originalString) {
+  var originalLength = originalString.length;
+  var newString = new String("");
+
+  for(var i = 0; i < originalLength; i++)
+    if (isDigit(originalString.charAt(i)) 
+           || isDecimalPoint(originalString.charAt(i)))
+      newString = newString.concat(originalString.charAt(i));
+  return parseFloat(newString);
+}
+
+function convert() {
+  var theForm = document.getElementById("main");
+  theForm.number.value = parsePrice(theForm.original.value);
+}
+
+</script>
+</body>
+</html>

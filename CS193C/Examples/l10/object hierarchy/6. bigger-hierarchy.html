@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Test</title>
+<script>
+
+function Animal() {
+	this.kingdom = "Animal";
+}
+
+function Mammal() {
+	this.biologicalclass = "Mammal";
+}
+
+Mammal.prototype = new Animal();
+
+function Canine() {
+	this.species = "Canis Lupus";
+}
+
+Canine.prototype = new Mammal();
+
+function Human() {
+	this.species = "Homo Sapien";
+}
+
+Human.prototype = new Mammal();
+
+var molly = new Canine();
+var patrick = new Human();
+
+console.log(molly.kingdom);
+console.log(patrick.kingdom);
+console.log(molly.biologicalclass);
+console.log(patrick.biologicalclass);
+console.log(molly.species);
+console.log(patrick.species);
+
+var chloe = new Canine();
+molly.species = "Canis Superiorus";
+
+console.log(molly.species);
+console.log(chloe.species);
+
+</script>
+<style>
+</style>
+</head>
+<body>
+</body>
+</html>

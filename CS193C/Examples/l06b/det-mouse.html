@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Event Test</title>
+</head>
+
+<body>
+<h1 id="heading">Detect Mouse Example</h1>
+
+<script>
+function testFunc(evt) {
+    var output = "";
+	
+    if (evt) output = "W3C-Compliant\n";
+    else if (event) output = "IE pre-IE9\n";
+    else output = "unknown\n";
+
+    evt = (evt) ? evt : ((event) ? event : null);
+	
+    output = output + "sx=" + evt.screenX + "; sy=" + evt.screenY + "\n" +
+             "cx=" + evt.clientX + "; cy=" + evt.clientY + "\n" +
+		     "button=" + evt.button + "\n";
+    if(evt.shiftKey) output = output + "shift ";
+    if(evt.altKey) output = output + "alt ";
+    if(evt.ctrlKey) output = output + "ctrl ";
+    alert(output);
+}
+
+document.getElementById("heading").onmousedown=testFunc;
+
+</script>
+</body>
+</html>

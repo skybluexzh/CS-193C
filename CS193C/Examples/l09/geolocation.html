@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Geolocation Example</title>
+</head>
+<body>
+<form id="geoinfo">
+<table>
+<tr><td>Latitude</td>
+	<td><input name="latitude" type="text" /></td>
+	<td></td></tr>
+<tr><td>Longitude</td>
+	<td><input name="longitude" type="text" /></td>
+	<td><input type="button" value="Get Info" onclick="getInfo();" /></td></tr>
+</table>
+<p><b>Run me in Firefox</b></p>
+</form>
+
+<script>
+
+function getInfo() {
+	navigator.geolocation.getCurrentPosition(theCallback);
+}
+
+function theCallback(position) {
+	var theForm = document.getElementById("geoinfo");
+	theForm.latitude.value = position.coords.latitude;
+	theForm.longitude.value = position.coords.longitude;
+}
+
+</script>
+</body>
+</html>

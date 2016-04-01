@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=9" />
+<title>Event Test</title>
+</head>
+
+<body>
+<h1 id="heading">DOM Mouse Example</h1>
+
+<script>
+function testFunc(event) {
+    var output="sx=" + event.screenX + "; sy=" + event.screenY + "\n" +
+             "cx=" + event.clientX + "; cy=" + event.clientY + "\n" +
+		     "button=" + event.button + "\n";
+    if(event.shiftKey) output = output + "shift ";
+    if(event.altKey) output = output + "alt ";
+    if(event.ctrlKey) output = output + "ctrl ";
+    alert(output);
+}
+
+document.getElementById("heading").addEventListener("mousedown",testFunc,false);
+
+</script>
+</body>
+</html>

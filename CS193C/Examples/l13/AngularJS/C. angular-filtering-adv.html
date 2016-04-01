@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+<meta charset="UTF-8" />
+<title></title>
+<script src="angular.js"></script>
+</head>
+<body ng-init="dorms=[{name: 'FloMo',capacity: 470},
+                      {name: 'Wilbur', capacity: 700 },
+					  {name: 'Stern', capacity: 600},
+					  {name: 'Lag', capacity: 400}];">
+
+Name: <input type="text" ng-model="searchitem.name" /> <br />
+Capacity: <input type="text" ng-model="searchitem.capacity" /> 
+
+<ul>
+<li ng-repeat="dorm in dorms | filter: searchitem">{{dorm.name}}: {{dorm.capacity}}</li>
+</ul>
+</body>
+</html>

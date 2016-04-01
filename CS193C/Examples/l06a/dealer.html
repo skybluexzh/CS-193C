@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Online Car Dealer</title>
+
+<style>
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+#nav {
+	width: 100px;
+	background-color: gray;
+	padding-top: 90px;
+	padding-left: 15px;
+	padding-right: 15px;
+	float: left;
+}
+
+#nav {
+}
+
+#nav li {
+	width: 90px;
+	background-color: blue;
+	list-style-type: none;
+	padding: 0px;
+	margin: 8px 0px;
+	border: 1px solid white;
+}
+
+#nav li a {
+	display: block;
+	color: white;
+	font-family: sans-serif;
+	font-size: x-large;
+	font-weight: bold;
+	text-decoration: none;
+	padding: 3px 0px 3px 5px;
+}
+
+#main {
+	width: 500px;
+	margin-left: 140px;
+	background-color: white;
+}
+
+#photo {
+	float: right;
+}
+
+#banner {
+	width: 350px;
+	margin-left: auto;
+	margin-right: auto;
+}
+</style>
+
+</head>
+<body>
+
+<ul id="nav">
+<li><a href="cars.html"
+             onmouseover="document.getElementById('photo').src='car.jpg';"
+             onmouseout="document.getElementById('photo').src='welcome.gif';">
+		Cars</a></li>
+<li><a href="trucks.html"
+             onmouseover="document.getElementById('photo').src='truck.jpg';"
+             onmouseout="document.getElementById('photo').src='welcome.gif';">
+        Trucks</a></li>
+<li><a href="vans.html"
+             onmouseover="document.getElementById('photo').src='van.jpg';"
+             onmouseout="document.getElementById('photo').src='welcome.gif';">
+        Vans</a></li>
+</ul>
+
+<div id="main"> <!-- Main Webpage -->
+<div id="banner">
+<img src="dealer-bnr.gif" alt="World's Largest" />
+</div>
+<p>
+<img src="welcome.gif" id="photo" align="right" id="photo" />
+We sell cars, trucks, and vans direct to you via the Internet.
+We are one of the oldest online auto dealers and one of the
+most reliable.  Check with your friends, our reputation for 
+service and honesty speaks for itself.  We'll find the right
+car, truck, or van for you and we'll get you in the vehicle 
+of your choice in no time.  Financing is available!
+</p>
+</div>
+
+</body>
+</html>

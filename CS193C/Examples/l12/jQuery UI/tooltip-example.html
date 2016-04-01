@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Tooltip Example</title>
+<style>
+span[title] {
+	color: red;
+	text-decoration: underline;
+}
+</style>
+<link href="css/blitzer/jquery-ui-1.10.3.custom.css" rel="stylesheet">
+<script src="js/jquery-1.9.1.js"></script>
+<script src="js/jquery-ui-1.10.3.custom.js"></script>
+<script>
+$(function() {
+
+		$( document ).tooltip();
+
+	});
+</script>
+</head>
+<body>
+
+<h1>Stanford University</h1>
+<p>I stopped by 
+<span title="Memorial Church is part of the Quad.">MemChu</span> 
+for a quick visit.  I then left the 
+<span title="The Stanford Quad is at the heart of campus.">Quad</span> 
+and headed for the 
+<span title="The Coffee House is in Tresidder Union.">CoHo.</span>
+I met some friends and we decided to go to 
+<span title="Memorial Auditorium is Stanford's largest venue.">MemAud</span>
+for Flicks.</p>
+</body>
+</html>

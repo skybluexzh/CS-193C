@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Ajax Test</title>
+
+</head>
+
+<body>
+<h1>Google News Summaries</h1>
+<p>Information summarized from RSS feed from news.google.com</p>
+<p>This version is live and requires matching proxy server file. Information is coming via a proxy on cgi.stanford.edu, this version can only run on cgi.stanford.edu.</p>
+
+<p>Note that this example will not run locally.</p>
+
+<p>
+<input type="button" value="Retrieve News" onclick="getNews();" />
+</p>
+
+<h2>News</h2>
+
+<div id="news">
+</div>
+
+<script>
+
+var requestObj = null;	// XMLHttpRequest object
+
+function getNews() {
+	requestObj = new XMLHttpRequest();
+		
+	requestObj.addEventListener("load",processNews,null);
+	requestObj.open('GET', './google-proxy.php', true);
+	requestObj.send(null); 
+}
+
+function processNews() {
+	var newsTitles = requestObj.responseXML.getElementsByTagName("item");
+	var newHTML = "<ul>";
+	for (var i=0; i < newsTitles.length; i++) {
+		newHTML = newHTML + "<li>" 
+				+ newsTitles[i].getElementsByTagName("title")[0].firstChild.nodeValue
+				+ "</li>";
+	}
+	newHTML = newHTML + "</ul>";
+	document.getElementById("news").innerHTML = newHTML;
+}
+
+
+</script>
+</body>
+</html>

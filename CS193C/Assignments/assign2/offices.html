@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+
+		<meta charset="UTF-8" />
+
+		<title></title>
+
+		<style type="text/css">
+
+		</style>
+
+		<script type="text/javascript">
+
+			function popup() {
+
+				var office = document.getElementById("offices").value;
+				if (office == "resed") {
+					window.open("resed.html", "_blank", "top=100, left=200, width=500, height=400");
+				} else if (office == "service") {
+					window.open("service.html", "_blank", "top=100, left=200, width=500, height=400");
+				} else if (office == "affair") {
+					window.open("affair.html", "_blank", "top=100, left=200, width=500, height=400");
+				} else if (office == "vice") {
+					window.open("vice.html", "_blank", "top=100, left=200, width=500, height=400");
+				}
+
+			}
+
+		</script>
+
+	</head>
+
+	<body>
+
+		<div id="main">
+
+			<img src="offices-bnr.gif" alt="offices-banner" width="500" height="100" />
+
+			<p>
+				Tresidder Union houses a number of University Offices. Most of these offices are part of the Vice-Provost Student Affairs (VPSA) organization.
+			</p>
+
+			<p>
+				To learn more about an individual office in Tresidder, select the name of the office from the pulldown menu below:
+			</p>
+
+			<select id="offices" onchange="popup()">
+				<option value="choose" selected="selected"> Choose an Office </option>
+				<option value="resed"> Residential Education </option>
+				<option value="service"> Student Service Center </option>
+				<option value="affair"> Office of Student Affairs </option>
+				<option value="vice"> Vice-Provost of Student Affairs </option>
+			</select>
+
+		</div>
+
+	</body>
+
+</html>

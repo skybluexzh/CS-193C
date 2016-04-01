@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="data">
+<table>
+<tr><td>Name</td>
+    <td><input type="text" name="cookieName" /></td></tr>
+<tr><td>Value</td>
+    <td><input type="text" name="cookieValue" /></td>
+    <td><input type="button" value="Set Cookie" 
+	           onclick="getDataAndSetCookie()" /></td>
+	<td><input type="button" value="Get Cookie" 
+               onclick="getDataAndRetrieveCookieValue()" /></td>
+	<td><input type="button" onclick="getAllCookies();" value="Get All Cookies" /></td>
+	<td><input type="button" onclick="getDataAndClearCookie();" value="Clear Cookie" /></td></tr>
+</table>
+</form>
+
+<script>
+
+// Functions Specific to This Webpage //
+
+function getDataAndSetCookie() {
+  var theForm = document.getElementById("data");
+  setCookie(theForm.cookieName.value,theForm.cookieValue.value);
+}
+
+function getDataAndRetrieveCookieValue() {
+  var theForm = document.getElementById("data");
+  theForm.cookieValue.value = getCookie(theForm.cookieName.value);
+}
+
+function getDataAndClearCookie() {
+  var theForm = document.getElementById("data");
+  clearCookie(theForm.cookieName.value);
+}
+
+
+// General Purpose Cookie Functions //
+
+function setCookie(cookieName, cookieValue) {
+  var expDate = new Date();
+  expDate.setFullYear(expDate.getFullYear() + 1);
+  document.cookie = cookieName + "=" + escape(cookieValue)
+  						+ "; expires=" + expDate.toGMTString();
+}
+
+function getCookie(cookieName) {
+  var allCookies = document.cookie;
+  var startName = allCookies.indexOf(cookieName);
+
+  if (startName == -1) {
+    return "";  // if no cookie found, return the empty string
+  }
+
+  var startValue = startName + cookieName.length + 1;
+  var endValue = allCookies.indexOf(";",startValue);
+  if (endValue == -1) {
+    endValue = allCookies.length;
+  }
+  return allCookies.substring(startValue,endValue);
+}
+
+function clearCookie(cookieName) {
+  var expDate = new Date();
+  expDate.setFullYear(expDate.getFullYear() - 1);
+  document.cookie = cookieName + "=foo"
+  		+ "; expires=" + expDate.toGMTString();
+}
+
+function getAllCookies() {
+  alert(document.cookie);
+}
+
+</script>
+</body>
+</html>

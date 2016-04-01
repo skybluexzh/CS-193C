@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Choose Theme</title>
+<link rel='stylesheet' type='text/css' href='choices.css'/>
+</head>
+<body>
+<h1>Choose a Theme</h1>
+
+<div id="standardDiv" class="standard">
+    <h2>Standard Theme</h2>
+	<ul>
+		<li>Black Text on White Background</li>
+		<li>Standard Serif Font</li>
+	</ul>
+	<input type="button" value="Choose Standard" onclick="setCookie('theme','standard.css');" />
+</div>
+
+<div id="modernDiv" class="modern">
+    <h2>Modern Theme</h2>
+	<ul>
+		<li>White Text on Blue Background</li>
+		<li>Sans-Serif Font</li>
+	</ul>
+	<input type="button" value="Choose Modern" onclick="setCookie('theme','modern.css');" />
+</div>
+
+<div id="jazzyDiv" class="jazzy">
+    <h2>Jazzy Theme</h2>
+	<ul>
+		<li>Fuschia Text on Purple Background</li>
+		<li>Sans-Serif Font</li>
+	</ul>
+ 	<input type="button" value="Choose Jazzy" onclick="setCookie('theme','jazzy.css');" />
+</div>
+
+<div id="stanfordDiv" class="stanford">
+    <h2>Stanford Theme</h2>
+	<ul>
+		<li>White Text on Cardinal Background</li>
+		<li>Sans-Serif Font</li>
+	</ul>
+	<input type="button" value="Choose Stanford" onclick="setCookie('theme','stanford.css');" />
+</div>
+
+<p><a href="themes-index.html">Go Back</a></p>
+
+<script>
+
+function setCookie(cookieName, cookieValue) {
+  var expDate = new Date();
+  expDate.setFullYear(expDate.getFullYear() + 1);
+  document.cookie = cookieName + "=" + escape(cookieValue)
+  						+ "; expires=" + expDate.toGMTString();
+}
+
+</script>
+
+</body>
+</html>

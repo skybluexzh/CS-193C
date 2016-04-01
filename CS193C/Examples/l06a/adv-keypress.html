@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Key Press Example</title>
+<script>
+
+function testKey() {
+	alert("pressed");
+}
+function textKey() {
+	alert("text pressed");
+}
+
+</script>
+</head>
+
+<body onkeypress="testKey();">
+<div>
+<input type="text" onkeypress="textKey();" />
+</div>
+</body>
+</html>

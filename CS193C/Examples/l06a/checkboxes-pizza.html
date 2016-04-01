@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Pizza Ingredients</title>
+<script>
+
+function calculateTotal() {
+  var pizzaForm = document.getElementById("pizza");
+  var total=8;
+  for (var i=0; i < 7; i++) {
+    if (pizzaForm.elements[i].checked) {
+      total = total + 0.75;
+    }
+  }
+  pizzaForm.total.value = total;
+}
+
+</script>
+</head>
+<body>
+<h2>Choose Pizza Ingredients</h2>
+<div>
+<form id="pizza">
+<p>
+<label><input type="checkbox" onclick="calculateTotal();" />Pepperoni</label>
+<label><input type="checkbox" onclick="calculateTotal();" />Sausage</label>
+<label><input type="checkbox" onclick="calculateTotal();" />Artichoke</label>
+<label><input type="checkbox" onclick="calculateTotal();" />Eggplant</label>
+<label><input type="checkbox" onclick="calculateTotal();" />Olives</label>
+<label><input type="checkbox" onclick="calculateTotal();" />Onions</label>
+<label><input type="checkbox" onclick="calculateTotal();" />Mushrooms</label>
+</p>
+<p><b>Total Price:</b> 
+   <input type="text" name="total" value="8" size="5" />
+</p>
+<p><i>$8 Cheese Only<br />
+      $0.75 for Each Ingredient</i>
+</p>
+</form>
+</div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html ng-app>
+
+	<head>
+
+		<meta charset="UTF-8" />
+
+		<title> Data Filter </title>
+
+		<style type="text/css">
+
+			#main {
+				margin-top: 20px;
+				margin-left: 20px;
+			}
+
+			table, th, td {
+				border: 1px solid black;
+				padding: 5px;
+			}
+
+			table {
+				margin-top: 10px;
+			}
+
+		</style>
+
+		<script src="angular.js"></script>
+
+	</head>
+
+	<body ng-init="cities=[
+					{metropolis: 'Mumbai', continent: 'Asia', population: 20400000},
+					{metropolis: 'New York', continent: 'North America', population: 212950000},
+					{metropolis: 'San Francisco', continent: 'North America', population: 5780000},
+					{metropolis: 'London', continent: 'Europe', population: 8580000},
+					{metropolis: 'Rome', continent: 'Europe', population: 2715000},
+					{metropolis: 'Melbourne', continent: 'Australia', population: 3900000},
+					{metropolis: 'San Jose', continent: 'North America', population: 735455},
+					{metropolis: 'Rostov-on-Don', continent: 'Europe', population: 1052000}
+					];">
+
+		<div id="main">
+
+			<input type="text" ng-model="searchString" />
+
+			<table>
+
+				<tr>
+					<th> Metropolis </th>
+					<th> Continent </th>
+					<th> Population </th>
+				</tr>
+				<tr ng-repeat="city in cities | filter: searchString">
+					<td> {{city.metropolis}} </td>
+					<td> {{city.continent}} </td>
+					<td> {{city.population}} </td>
+				</tr>
+
+			</table>
+
+		</div>
+
+	</body>
+
+</html>

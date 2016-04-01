@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Choose Theme Example</title>
+</head>
+
+<body>
+<h1>Sample Webpage</h1>
+<p>Welcome to Cardinal Travel, your one-stop website for all student travel needs. 
+Whether you're looking for the cheapest airfare, the best cruise, or the latest in 
+vacation ideas, Cardinal Travel is here for you.</p>
+
+<p>Here are some quotes from satisfied customers:</p>
+
+<ul>
+<li>Thanks so much for your help, we had so much fun travelling in Europe.</li>
+<li>I don't get my tickets anywhere else, Cardinal Travel has all the best prices.</li>
+</ul>
+<p><a href="choose-theme.html">Choose a Theme</a></p>
+
+<script type="text/javascript">
+
+function setCookie(cookieName, cookieValue) {
+  var expDate = new Date();
+  expDate.setFullYear(expDate.getFullYear() + 1);
+  document.cookie = cookieName + "=" + escape(cookieValue)
+  						+ "; expires=" + expDate.toGMTString();
+}
+
+function getCookie(cookieName) {
+  var allCookies = document.cookie;
+  var startName = allCookies.indexOf(cookieName);
+
+  if (startName == -1) {
+    return "";  // if no cookie found, return the empty string
+  }
+
+  var startValue = startName + cookieName.length + 1;
+  var endValue = allCookies.indexOf(";",startValue);
+  if (endValue == -1) {
+    endValue = allCookies.length;
+  }
+  return allCookies.substring(startValue,endValue);
+}
+
+function clearCookie(cookieName) {
+  var expDate = new Date();
+  expDate.setFullYear(expDate.getFullYear() - 1);
+  document.cookie = cookieName + "=foo"
+  		+ "; expires=" + expDate.toGMTString();
+}
+
+var stylesheet=getCookie("theme");
+if (stylesheet) 
+	document.writeln("<link rel='stylesheet' type='text/css' href='" + stylesheet + "' />");
+else document.writeln("<link rel='stylesheet' type='text/css' href='standard.css' />");
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+db.cities.insert( {name: "Mumbai", continent: "Asia", population: 20400000} );
+db.cities.insert( {name: "New York", continent: "North America", population: 21295000} );
+db.cities.insert( {name: "London", continent: "Europe", population: 8580000} );
+db.cities.insert( {name: "Rome", continent: "Europe", population: 2715000} );
+db.cities.insert( {name: "Melbourne", continent: "Australia", population: 3900000} );
+db.cities.insert( {name: "San Francisco", continent: "North America", population: 5780000} );
+db.cities.insert( {name: "San Jose", continent: "North America", population: 7354555} );
+db.cities.insert( {name: "Tokyo", continent: "Asia", population: 13185502} );
+db.cities.insert( {name: "Hong Kong", continent: "Asia", population: 7234800} );
+
+db.cities.find();
+
+or
+
+db.cities.find({});
+
+db.cities.find({},{name: 1});
+db.cities.find({},{_id: 0});
+db.cities.find({},{name: 1, _id: 0});
+
+db.cities.find({continent: "Asia"},{_id: 0});
+db.cities.find({population: 7354555},{_id: 0});
+db.cities.find({population: {$lt: 7354555}},{_id: 0});
+
+db.cities.find({continent: {$in: ["Australia", "Asia"]}},{_id: 0});
+
+db.cities.find({$or: [{continent: "Australia"},
+                              {population: {$gt: 20000000}}]},{_id: 0});
+
+db.cities.update({name: "San Francisco"},{$set: {university: "Stanford"}});
+db.cities.find({name: "San Francisco"},{_id: 0});
+db.cities.find({university: {$exists: true}},{_id: 0});
+
+var c = db.cities.find();
+
+while(c.hasNext()) {
+        var curr = c.next();
+        print(tojson(curr));
+}
+
+original_id = ObjectId();
+
+db.universities.insert({
+      _id: original_id,
+      name: "Harvard"});
+
+db.cities.insert( {name: "Boston",
+                   continent: "North America", 
+                   population: 636479,
+                   university_id: original_id} );
+
+var theCity = db.cities.find({name: "Boston"})[0];
+db.universities.find({_id: theCity.university_id});
+
+db.cities.remove({});  // clears the collection
